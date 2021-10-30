@@ -10,7 +10,7 @@ Relative Weighted Distance
 
 :return: the value (value-mean)/unstd except special cases
 
-The idea behind this function can be read in :py:func:`Normalize`.
+In :py:func:`Normalize` you can read more about this function.
 """
 
 TWD.__doc__ =\
@@ -29,7 +29,7 @@ It returns the sum of
 
 where the sum runs over the indexes ``i`` for which ``values[i]`` is not ``NaN``.
 
-This function is is used when ``keys = [k_1, ..., k_l]`` are columns of a dataframe ``data`` and ``x`` is an index of data, by setting
+This function is used when ``keys = [k_1, ..., k_l]`` are columns of a dataframe ``data`` and ``x`` is an index of data, by setting
 
 .. code-block:: python
     
@@ -46,7 +46,7 @@ In this case:
 The contribution ``abs(xt.RWD(values[i],means[i],un_stds[i]))`` measures
 the distance of ``data[k_i].loc[x]`` from the mean of ``data[k_i]``. Thus the higher the value of the sum, the farther are the values ``values[i]``
 from the mean of the corresponding column.
-Moreover those contribution are uniform among the various columns as we are using the the normalization process described in :py:func:`Normalize`.
+Moreover those contribution are uniform among the various columns as we are using the normalization process described in :py:func:`Normalize`.
 """
 
 Normalize.__doc__ = \
@@ -55,7 +55,7 @@ Returns a normalized copy of ``obj``.
 
 :param obj: numeric series or dataframe
 :type obj: pd.Series or pd.DataFrame
-:param bool dropna: if True and ``obj`` is a series, then ``NaN`` values are discarded, has no effect if ``obj`` is a dataframe, default True
+:param bool dropna: if True and ``obj`` is a series, then ``NaN`` values are discarded; has no effect if ``obj`` is a dataframe, default True
 
 :rtype: same type of ``obj``
 
@@ -85,12 +85,12 @@ In particular normalizing ``nor`` again has no effect. Moreover the normalizatio
 If x is an index of obj, the closer is ``nor.loc[x]`` to 1 or -1, the farther is the ``obj.loc[x]`` from the mean of ``obj``.
 
 We have prefered the un-normalized standard deviation over the classical one, because otherwise the sum of the squares of the normalization would give us the length
-of the series, rather than 1, making more difficult to understand how "extremal" is a value. Clearly any normalization obtained as ``(obj+a)/b`` for costants ``a,b`` with ``b`` positive
+of the series, rather than 1, making more difficult to understand how "extremal" is a value. Clearly any normalization obtained as ``(obj+a)/b`` for constants ``a,b`` with ``b`` positive
 makes no difference when sorting the indexes of ``obj`` by their value.
 
 ``Warning`` There are some special cases when the normalization must be defined in a different way.
 
-- If the series contains ``numpy.inf`` the normalization process is not possible, threfore the original series is returned.
+- If the series contains ``numpy.inf`` the normalization process is not possible, therefore the original series is returned.
 
 - If ``unstd = 0`` the normalization cannot be obtained modding out by ``unstd``. On the other hand ``unstd = 0`` \
 means that all non ``NaN`` values are the same and coincide with the mean of ``obj``. Therefore ``nor`` is ``obj`` with all non ``NaN`` values \
@@ -134,17 +134,17 @@ Examples: we consider the dataframe :ref:`data <data>`
 
 Test.__doc__ = \
 """
-This class implements the idea of a Test to be runned on a dataframe.
+This class implements the idea of a test to run on a dataframe.
 The output, returned via :py:func:`Test.Apply`, is a sorted series.
 
-:param keys: list of columns, default None: all columns will be used
+:param keys: list of columns to use, default ``None``: all columns used
 :type keys: list
-:param function: function, default None
+:param function: function, default ``None``
 :type function: function
 :param args: list of optional arguments for function, default empty
 :type args: list
 :param bool normalized: If True, the resulting series will be normalized (see :py:func:`Normalize`), default False
-:param name: name of the output series, default None
+:param name: name of the output series, default ``None``
 :type name: str
 
 The attribute ``function`` takes a list as input: if ``l`` is the length of ``keys``, such list is divided into two parts: the first ``l`` elements will be the values of a row
@@ -211,7 +211,7 @@ FilterDatakeys.__doc__ = \
 Filter ``keys`` from non numeric columns and ``data`` for duplicated columns.
 
 :param pandas.DataFrame data: dataframe
-:param list keys: list of columns to use, default None: all columns used
+:param list keys: list of columns to use, default ``None``: all columns used
 :param list exclude: list of columns to exclude, default empty
 
 :return: ``[keys, data]`` after the filtering
@@ -239,8 +239,8 @@ TWDTest.__doc__ = \
 """
 Returns a Total Weighted Distance test
 
-:param list keys: list of columns to use, default None: all columns will be used
-:param str name: optional name, default 'TWD'
+:param list keys: list of columns to use, default ``None``: all columns used
+:param str name: optional name, default ``'TWD'``
 
 If ``data`` is a dataframe and ``keys`` is a list of columns, we can run
 
@@ -333,8 +333,8 @@ This test is interesting if used with ``normalized = True``.
 
 :param str key: column key of some dataframe
 :param bool normalized: if True, the test is normalized, default False
-:param name: optional name, default None: ``self.name`` is set to ``key``
-:type name: str or None
+:param name: optional name, default ``None``: ``self.name`` is set to ``key``
+:type name: str or ``None``
 
 Examples: we consider the dataframe :ref:`data <data>`
 
@@ -379,8 +379,8 @@ It tests the difference between columns key1 and key2: the function ``self.funct
 :param str key1: column key of some dataframe
 :param str key2: column key of some dataframe
 :param bool normalized: if True, the test is normalized, default False
-:param name: optional name, default None: ``self.name`` is set to ``key2 - key1``
-:type name: str or None
+:param name: optional name, default ``None``: ``self.name`` is set to ``key2 - key1``
+:type name: str or ``None``
 
 Examples: we consider the dataframe :ref:`data <data>`
 
@@ -426,7 +426,7 @@ Returns a dataframe or a series which is a concatenation of the lowest values of
 :type obj: pandas.Series or pandas.DataFrame 
 :param low,high: default 0
 :type low,high: numbers
-:param str key: sorting column, default None
+:param str key: sorting column, default ``None``
 :param list bound: list of two numbers, default empty
 
 :rtype: same type as ``obj``
@@ -521,7 +521,7 @@ can change both the size and the order of the returned dataframe, as the followi
     b     2   4.0
 
 For ``d1`` the order is given by the first column and the number of rows is ``0.5*4=2``. For ``d2`` instead, the order is given by
-the second colum and the number or rows is ``0.5*(4-2) = 1`` because we have to drop the ``NaN`` values.
+the second column and the number or rows is ``0.5*(4-2) = 1`` because we have to drop the ``NaN`` values.
 """
 
 GetColTests.__doc__= \
@@ -529,7 +529,7 @@ GetColTests.__doc__= \
 Returns a list of :py:class:`.ColTest`, one for each  specified column.
 
 :param pandas.DataFrame data: dataframe
-:param list keys: list of columns to use, default None: all columns used
+:param list keys: list of columns to use, default ``None``: all columns used
 :param list exclude: list of columns to exclude, default empty
 :param bool normalized: parameter passed to the returned tests
 
@@ -541,7 +541,7 @@ GetDiffTests.__doc__ = \
 Returns a list of :py:class:`.ColDiffTest`, one for each pair of specified columns.
 
 :param pandas.DataFrame data: dataframe
-:param list keys: list of columns to use, default None: all columns used
+:param list keys: list of columns to use, default ``None``: all columns used
 :param list exclude: list of columns to exclude, default empty
 :param bool normalized: parameter passed to the returned tests
 
@@ -606,7 +606,7 @@ We can bound the results using
     l  0.036613   588.0     1.075787  1.131579
     b  0.729637  -226.0     2.024297  1.955023
     
-It contains the 20% highest rows of ``result``, computed with respect to the column 'TWD'.
+It contains the 20% highest rows of ``result``, computed with respect to the column ``'TWD'``.
 
 .. code-block:: python
 
@@ -647,7 +647,7 @@ Returns a dataframe with the lowest values followed by the highest ones, dependi
 
 :param low,high: default 0
 :type low,high: numbers
-:param str key: sorting column, default 'TWD'
+:param str key: sorting column, default ``'TWD'``
 :param list bound: list of two numbers, default empty
 
 :rtype: pandas.DataFrame
@@ -662,7 +662,7 @@ Examples
     results = extr.Run()
     bounded_res = extr.OutOfBound(10,0.02)
 
-``bounded_res`` contains the lowest 10 elements of ``results``, followed by %2 of the highest one, with respect to the 'TWD' column created automatically
+``bounded_res`` contains the lowest 10 elements of ``results``, followed by %2 of the highest one, with respect to the ``'TWD'`` column created automatically
 with ``xt.Run()``. See also :py:class:`.Extremals`
 """
 
@@ -689,7 +689,7 @@ ExtremalsCol.__doc__ = \
 This class applies  a series of :py:class:`.ColTest` to the dataframe ``data``, one for each specified column.
 
 :param pandas.DataFrame data: dataframe, which is then copied in ``self.data``
-:param list keys: list of columns to use, default None: all columns used
+:param list keys: list of columns to use, default ``None``: all columns used
 :param list exclude: list of columns to exclude, default empty
 :param bool normalized: if True, the tests are normalized, default False
 
@@ -751,7 +751,7 @@ ExtremalsDiff.__doc__ = \
 This class applies a series of :py:class:`ColDiffTest` to the dataframe ``data``, one for each pair of specified columns.
 
 :param pandas.DataFrame data: dataframe, which is then copied in ``self.data``
-:param list keys: list of columns to use, default None: all columns used
+:param list keys: list of columns to use, default ``None``: all columns used
 :param list exclude: list of columns to exclude, default empty
 :param bool normalized: if True, the tests are normalized, default False
 
@@ -784,9 +784,9 @@ Applies a :py:class:`TWDTest` on ``data``
 
 :param data: dataframe or series
 :param list bound: list of two numbers following the same rules in :py:func:`.OutOfBound`, default ``[-1,-1]``: no bound applied
-:param list keys: list of columns to use, default None: all columns used
+:param list keys: list of columns to use, default ``None``: all columns used
 :param list exclude: list of columns to exclude, default empty
-:param str name: name of the returned series, default 'TWD'
+:param str name: name of the returned series, default ``'TWD'``
 
 :rtype: pandas.Series
 
@@ -854,7 +854,7 @@ Iteratively applies a :py:class:`TWDTest` on ``data``, removing the ``high`` "wo
 :param data: a dataframe or a series
 :param number high: positive number, expressing the number or percentage of items to remove
 :param int steps: steps used, default 1
-:param list keys: list of columns to use, default None: all columns used
+:param list keys: list of columns to use, default ``None``: all columns used
 :param list exclude: list of columns to exclude, default empty
 :param bool verbose: if True, it prints how many elements are removed each step, default False
 
@@ -867,7 +867,7 @@ indexes is removed.
 
 With ``keys`` and ``exclude`` it is possible to choose the columns to use in the test, so that it will not depend on the other ones.
 
-At the end of the process, it returns two dataframes, in order the one of purged indexes and the one of remaining indexes. The indexes of the "purged" dataframe are oredered
+At the end of the process, it returns two dataframes, in order the one of purged indexes and the one of remaining indexes. The indexes of the "purged" dataframe are ordered
 according to the order of their removal.
 
 Applying this purging operation in several steps refines the search of anomalous rows. At any step, the marginal rows selected to be drop make the means unbalanced 
@@ -918,7 +918,7 @@ For convenience let's print the whole ``data`` ordered via the :py:class:`AddTWD
     b  100.0  200.0  74.0  2.02
     
 As you can see ``purged`` consists of the last three rows of ``data_ordered``, provided we remove the last column and
-we reverse the order of the rows. Rows ``b`` and ``l`` are numberically different from the others, thus it makes sense they are
+we reverse the order of the rows. Rows ``b`` and ``l`` are numerically different from the others, thus it makes sense they are
 highlighted as special. Same is true for ``c``, but I can't help to think that also ``g`` looks even more different. Why is it not
 ranking higher in the :py:class:`TWDTest`? It is because ``b`` is having too much an impact in the computation of the mean, for instance
 ``data['col1'].mean()`` is around 16.5. Same for ``l`` in the second column.
@@ -959,7 +959,7 @@ AddTWDTest.__doc__ = \
 Append the result of a :py:func:`TWDTest` as a column to ``data``, sorting it according to their values.
 
 :param pandas.DataFrame data: dataframe
-:param list keys: list of columns to use, default None: all columns used
+:param list keys: list of columns to use, default ``None``: all columns used
 :param list exclude: list of columns to exclude, default empty
 :param bool normalized: if True, data is normalized in the output, default False
 

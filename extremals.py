@@ -1,17 +1,12 @@
 """
-Detect extremals data in a pandas series or dataframe
-
-Author: Fabio Tonini
-
-
-Examples in this documentation requires
+Examples in this documentation assume you run
 
 .. code-block:: python
 
     import pandas as pd
     import extremals as xt
 
-an example dataframe
+Let's fix also an example dataframe
 
 .. _data:
 

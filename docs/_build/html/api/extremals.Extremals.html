@@ -1,0 +1,309 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Extremals &#8212; extremals 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ExtremalsCol" href="extremals.ExtremalsCol.html" />
+    <link rel="prev" title="TWDTest" href="extremals.TWDTest.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="extremals">
+<h1>Extremals<a class="headerlink" href="#extremals" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="extremals.Extremals">
+<em class="property">class </em><code class="descclassname">extremals.</code><code class="descname">Extremals</code><span class="sig-paren">(</span><em>data</em>, <em>tests=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/extremals.html#Extremals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extremals.Extremals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>This class allows to create a new dataframe as results of multiple tests and to look for the extremals rows.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> (<em>pandas.DataFrame</em>) – dataframe, which is then copied in <code class="docutils literal notranslate"><span class="pre">self.data</span></code></li>
+<li><strong>tests</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a>) – list of <a class="reference internal" href="extremals.Test.html#extremals.Test" title="extremals.Test"><code class="xref py py-class docutils literal notranslate"><span class="pre">Test</span></code></a> instances to run on <code class="docutils literal notranslate"><span class="pre">data</span></code>, default empty</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tests</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># define some tests</span>
+<span class="n">data</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># your dataframe</span>
+<span class="n">extr</span> <span class="o">=</span> <span class="n">xt</span><span class="o">.</span><span class="n">Extremals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">extr</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">results</span></code> is a dataframe with the results of the tests, see <a class="reference internal" href="#extremals.Extremals.Run" title="extremals.Extremals.Run"><code class="xref py py-func docutils literal notranslate"><span class="pre">Extremals.Run</span></code></a>.
+It can be accessed also with <code class="docutils literal notranslate"><span class="pre">extr.results</span></code>. We can look at the bounded results using <a class="reference internal" href="#extremals.Extremals.OutOfBound" title="extremals.Extremals.OutOfBound"><code class="xref py py-func docutils literal notranslate"><span class="pre">Extremals.OutOfBound</span></code></a>.</p>
+<p>Examples: we consider the dataframe <a class="reference internal" href="../Documentation.html#data"><span class="std std-ref">data</span></a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">xt</span><span class="o">.</span><span class="n">ColTest</span><span class="p">(</span><span class="s1">&#39;col3&#39;</span><span class="p">,</span> <span class="n">normalized</span> <span class="o">=</span> <span class="kc">True</span><span class="p">),</span>
+    <span class="n">xt</span><span class="o">.</span><span class="n">Test</span><span class="p">(</span><span class="n">function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;custom&#39;</span><span class="p">),</span>
+    <span class="n">xt</span><span class="o">.</span><span class="n">TWDTest</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;TWD on data&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">extr</span> <span class="o">=</span> <span class="n">xt</span><span class="o">.</span><span class="n">Extremals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">extr</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+
+<span class="c1"># result is the dataframe</span>
+       <span class="n">col3</span>  <span class="n">custom</span>  <span class="n">TWD</span> <span class="n">on</span> <span class="n">data</span>       <span class="n">TWD</span>
+<span class="n">i</span>       <span class="n">NaN</span>     <span class="n">NaN</span>     <span class="mf">0.157379</span>  <span class="mf">0.268680</span>
+<span class="n">h</span>       <span class="n">NaN</span>     <span class="n">NaN</span>     <span class="mf">0.153905</span>  <span class="mf">0.270682</span>
+<span class="n">e</span>  <span class="mf">0.036613</span>     <span class="n">NaN</span>     <span class="mf">0.102827</span>  <span class="mf">0.336722</span>
+<span class="n">d</span>  <span class="mf">0.337359</span>     <span class="n">NaN</span>     <span class="mf">0.552499</span>  <span class="mf">0.378391</span>
+<span class="n">f</span> <span class="o">-</span><span class="mf">0.198754</span>    <span class="mf">28.5</span>     <span class="mf">0.282413</span>  <span class="mf">0.422102</span>
+<span class="n">a</span> <span class="o">-</span><span class="mf">0.237982</span>  <span class="o">-</span><span class="mf">103.0</span>     <span class="mf">0.602914</span>  <span class="mf">0.479087</span>
+<span class="n">c</span> <span class="o">-</span><span class="mf">0.413199</span>   <span class="mf">108.6</span>     <span class="mf">0.727218</span>  <span class="mf">0.569419</span>
+<span class="n">g</span> <span class="o">-</span><span class="mf">0.290286</span>  <span class="o">-</span><span class="mf">121.0</span>     <span class="mf">0.557941</span>  <span class="mf">0.585008</span>
+<span class="n">l</span>  <span class="mf">0.036613</span>   <span class="mf">588.0</span>     <span class="mf">1.075787</span>  <span class="mf">1.131579</span>
+<span class="n">b</span>  <span class="mf">0.729637</span>  <span class="o">-</span><span class="mf">226.0</span>     <span class="mf">2.024297</span>  <span class="mf">1.955023</span>
+</pre></div>
+</div>
+<p>The last column is the result of a <a class="reference internal" href="extremals.TWDTest.html#extremals.TWDTest" title="extremals.TWDTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">TWDTest</span></code></a> on the first three columns and it is automatically run, unless <code class="docutils literal notranslate"><span class="pre">twd</span> <span class="pre">=</span> <span class="pre">False</span></code> is passed to <code class="docutils literal notranslate"><span class="pre">extr.Run</span></code>.
+We can bound the results using</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">b_result</span> <span class="o">=</span> <span class="n">extr</span><span class="o">.</span><span class="n">OutOfBound</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># b_result is the dataframe</span>
+       <span class="n">col3</span>  <span class="n">custom</span>  <span class="n">TWD</span> <span class="n">on</span> <span class="n">data</span>       <span class="n">TWD</span>
+<span class="n">l</span>  <span class="mf">0.036613</span>   <span class="mf">588.0</span>     <span class="mf">1.075787</span>  <span class="mf">1.131579</span>
+<span class="n">b</span>  <span class="mf">0.729637</span>  <span class="o">-</span><span class="mf">226.0</span>     <span class="mf">2.024297</span>  <span class="mf">1.955023</span>
+</pre></div>
+</div>
+<p>It contains the 20% highest rows of <code class="docutils literal notranslate"><span class="pre">result</span></code>, computed with respect to the column <code class="docutils literal notranslate"><span class="pre">'TWD'</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bb_result</span> <span class="o">=</span> <span class="n">extr</span><span class="o">.</span><span class="n">OutOfBound</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;custom&#39;</span><span class="p">)</span>
+
+<span class="c1"># bb_result is the dataframe</span>
+   <span class="n">col3</span>  <span class="n">custom</span>  <span class="n">TWD</span> <span class="n">on</span> <span class="n">data</span>       <span class="n">TWD</span>
+<span class="n">l</span>  <span class="mf">0.036613</span>   <span class="mf">588.0</span>     <span class="mf">1.075787</span>  <span class="mf">1.131579</span>
+</pre></div>
+</div>
+<p>Now the 20% and the sorting are computed with respect to the column ‘custom’, after all <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values have been discarded.
+<code class="docutils literal notranslate"><span class="pre">bb_result</span></code> can also be obtained as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">xt</span><span class="o">.</span><span class="n">OutOfBound</span><span class="p">(</span><span class="n">extr</span><span class="o">.</span><span class="n">results</span><span class="p">,</span> <span class="n">bound</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;custom&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Methods Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#extremals.Extremals.NormalizeTests" title="extremals.Extremals.NormalizeTests"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NormalizeTests</span></code></a>([value])</td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">param bool value:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">default True</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#extremals.Extremals.OutOfBound" title="extremals.Extremals.OutOfBound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OutOfBound</span></code></a>([low,&nbsp;high,&nbsp;key,&nbsp;bound])</td>
+<td>Returns a dataframe with the lowest values followed by the highest ones, depending on <code class="docutils literal notranslate"><span class="pre">low</span></code>, <code class="docutils literal notranslate"><span class="pre">high</span></code> and <code class="docutils literal notranslate"><span class="pre">bound</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#extremals.Extremals.Run" title="extremals.Extremals.Run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Run</span></code></a>([twd])</td>
+<td>Runs the tests</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#extremals.Extremals.SetColTests" title="extremals.Extremals.SetColTests"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SetColTests</span></code></a>([keys,&nbsp;exclude,&nbsp;normalized])</td>
+<td>Set <code class="docutils literal notranslate"><span class="pre">self.tests</span></code> via <a class="reference internal" href="extremals.GetColTests.html#extremals.GetColTests" title="extremals.GetColTests"><code class="xref py py-func docutils literal notranslate"><span class="pre">GetColTests</span></code></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#extremals.Extremals.SetDiffTests" title="extremals.Extremals.SetDiffTests"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SetDiffTests</span></code></a>([keys,&nbsp;exclude,&nbsp;normalized])</td>
+<td>Set <code class="docutils literal notranslate"><span class="pre">self.tests</span></code> via <a class="reference internal" href="extremals.GetDiffTests.html#extremals.GetDiffTests" title="extremals.GetDiffTests"><code class="xref py py-func docutils literal notranslate"><span class="pre">GetDiffTests</span></code></a></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods Documentation</p>
+<dl class="method">
+<dt id="extremals.Extremals.NormalizeTests">
+<code class="descname">NormalizeTests</code><span class="sig-paren">(</span><em>value=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/extremals.html#Extremals.NormalizeTests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extremals.Extremals.NormalizeTests" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – default True</td>
+</tr>
+</tbody>
+</table>
+<p>Set the attribute <code class="docutils literal notranslate"><span class="pre">normalized</span></code> to <code class="docutils literal notranslate"><span class="pre">value</span></code> for all <a class="reference internal" href="extremals.Test.html#extremals.Test" title="extremals.Test"><code class="xref py py-class docutils literal notranslate"><span class="pre">Test</span></code></a> instances in <code class="docutils literal notranslate"><span class="pre">self.tests</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="extremals.Extremals.OutOfBound">
+<code class="descname">OutOfBound</code><span class="sig-paren">(</span><em>low=0</em>, <em>high=0</em>, <em>key='TWD'</em>, <em>bound=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/extremals.html#Extremals.OutOfBound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extremals.Extremals.OutOfBound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dataframe with the lowest values followed by the highest ones, depending on <code class="docutils literal notranslate"><span class="pre">low</span></code>, <code class="docutils literal notranslate"><span class="pre">high</span></code> and <code class="docutils literal notranslate"><span class="pre">bound</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>low</strong><strong>,</strong><strong>high</strong> (<em>numbers</em>) – default 0</li>
+<li><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – sorting column, default <code class="docutils literal notranslate"><span class="pre">'TWD'</span></code></li>
+<li><strong>bound</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a>) – list of two numbers, default empty</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">pandas.DataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>If <code class="docutils literal notranslate"><span class="pre">bound</span></code> is a list of two numbers, those are used instead of <code class="docutils literal notranslate"><span class="pre">low</span></code> and <code class="docutils literal notranslate"><span class="pre">high</span></code>. It calls <a class="reference internal" href="extremals.OutOfBound.html#extremals.OutOfBound" title="extremals.OutOfBound"><code class="xref py py-func docutils literal notranslate"><span class="pre">OutOfBound</span></code></a> on <code class="docutils literal notranslate"><span class="pre">self.results</span></code> with the same arguments.</p>
+<p>Examples</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extr</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># An instance of xt.Extremals</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">extr</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+<span class="n">bounded_res</span> <span class="o">=</span> <span class="n">extr</span><span class="o">.</span><span class="n">OutOfBound</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.02</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">bounded_res</span></code> contains the lowest 10 elements of <code class="docutils literal notranslate"><span class="pre">results</span></code>, followed by %2 of the highest one, with respect to the <code class="docutils literal notranslate"><span class="pre">'TWD'</span></code> column created automatically
+with <code class="docutils literal notranslate"><span class="pre">xt.Run()</span></code>. See also <a class="reference internal" href="#extremals.Extremals" title="extremals.Extremals"><code class="xref py py-class docutils literal notranslate"><span class="pre">Extremals</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="extremals.Extremals.Run">
+<code class="descname">Run</code><span class="sig-paren">(</span><em>twd=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/extremals.html#Extremals.Run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extremals.Extremals.Run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the tests</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – if True, applies a <a class="reference internal" href="extremals.TWDTest.html#extremals.TWDTest" title="extremals.TWDTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">TWDTest</span></code></a> to the results of the tests in <code class="docutils literal notranslate"><span class="pre">self.tests</span></code>, default True</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">pandas.DataFrame <code class="docutils literal notranslate"><span class="pre">self.results</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>It first applies each test in <code class="docutils literal notranslate"><span class="pre">self.test</span></code> on <code class="docutils literal notranslate"><span class="pre">self.data</span></code>. The resulting series are then packed into a new dataframe <code class="docutils literal notranslate"><span class="pre">self.results</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">twd</span></code> is set to True (which is default), it runs a <a class="reference internal" href="extremals.TWDTest.html#extremals.TWDTest" title="extremals.TWDTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">TWDTest</span></code></a> on the whole <code class="docutils literal notranslate"><span class="pre">self.results</span></code>, appending it as last column
+and sorting the dataframe with respect to it. Notice that the <code class="docutils literal notranslate"><span class="pre">TWD</span></code> column (which is not normalized) does not depend on the <code class="docutils literal notranslate"><span class="pre">normalized</span></code> attributes
+of the tests in <code class="docutils literal notranslate"><span class="pre">self.tests</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">self.results</span></code> is also returned as output.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="extremals.Extremals.SetColTests">
+<code class="descname">SetColTests</code><span class="sig-paren">(</span><em>keys=None</em>, <em>exclude=[]</em>, <em>normalized=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/extremals.html#Extremals.SetColTests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extremals.Extremals.SetColTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set <code class="docutils literal notranslate"><span class="pre">self.tests</span></code> via <a class="reference internal" href="extremals.GetColTests.html#extremals.GetColTests" title="extremals.GetColTests"><code class="xref py py-func docutils literal notranslate"><span class="pre">GetColTests</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="extremals.Extremals.SetDiffTests">
+<code class="descname">SetDiffTests</code><span class="sig-paren">(</span><em>keys=None</em>, <em>exclude=[]</em>, <em>normalized=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/extremals.html#Extremals.SetDiffTests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extremals.Extremals.SetDiffTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set <code class="docutils literal notranslate"><span class="pre">self.tests</span></code> via <a class="reference internal" href="extremals.GetDiffTests.html#extremals.GetDiffTests" title="extremals.GetDiffTests"><code class="xref py py-func docutils literal notranslate"><span class="pre">GetDiffTests</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">extremals</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Documentation.html">Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../Documentation.html#module-extremals">extremals Module</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Documentation.html#functions">Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../Documentation.html#classes">Classes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="extremals.Test.html">Test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extremals.ColTest.html">ColTest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extremals.ColDiffTest.html">ColDiffTest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extremals.TWDTest.html">TWDTest</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Extremals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extremals.ExtremalsCol.html">ExtremalsCol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extremals.ExtremalsDiff.html">ExtremalsDiff</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Documentation.html#class-inheritance-diagram">Class Inheritance Diagram</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../Documentation.html">Documentation</a><ul>
+      <li>Previous: <a href="extremals.TWDTest.html" title="previous chapter">TWDTest</a></li>
+      <li>Next: <a href="extremals.ExtremalsCol.html" title="next chapter">ExtremalsCol</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Fabio Tonini.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../_sources/api/extremals.Extremals.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

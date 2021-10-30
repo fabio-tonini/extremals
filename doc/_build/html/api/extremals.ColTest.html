@@ -1,0 +1,176 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ColTest &#8212; extremals 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ColDiffTest" href="extremals.ColDiffTest.html" />
+    <link rel="prev" title="Test" href="extremals.Test.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="coltest">
+<h1>ColTest<a class="headerlink" href="#coltest" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="extremals.ColTest">
+<em class="property">class </em><code class="descclassname">extremals.</code><code class="descname">ColTest</code><span class="sig-paren">(</span><em>key</em>, <em>normalized=False</em>, <em>name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/extremals.html#ColTest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extremals.ColTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="extremals.Test.html#extremals.Test" title="extremals.Test"><code class="xref py py-class docutils literal notranslate"><span class="pre">extremals.Test</span></code></a></p>
+<p>This is a simple test on one column <code class="docutils literal notranslate"><span class="pre">key</span></code>. The function <code class="docutils literal notranslate"><span class="pre">self.function</span></code> is the <code class="docutils literal notranslate"><span class="pre">identity</span></code>: for each row return the value at that row.
+This test is interesting if used with <code class="docutils literal notranslate"><span class="pre">normalized</span> <span class="pre">=</span> <span class="pre">True</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – column key of some dataframe</li>
+<li><strong>normalized</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – if True, the test is normalized, default False</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a>) – optional name, default None: <code class="docutils literal notranslate"><span class="pre">self.name</span></code> is set to <code class="docutils literal notranslate"><span class="pre">key</span></code></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples: we consider the dataframe <a class="reference internal" href="../Documentation.html#data"><span class="std std-ref">data</span></a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ctest</span> <span class="o">=</span> <span class="n">xt</span><span class="o">.</span><span class="n">ColTest</span><span class="p">(</span><span class="s1">&#39;col1&#39;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ctest</span><span class="o">.</span><span class="n">Apply</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># result is just data[&#39;col1&#39;] sorted and without NaN values.</span>
+<span class="n">d</span>     <span class="o">-</span><span class="mf">3.0</span>
+<span class="n">l</span>      <span class="mf">0.0</span>
+<span class="n">c</span>      <span class="mf">1.0</span>
+<span class="n">a</span>      <span class="mf">3.0</span>
+<span class="n">h</span>      <span class="mf">8.0</span>
+<span class="n">f</span>      <span class="mf">9.0</span>
+<span class="n">i</span>      <span class="mf">9.0</span>
+<span class="n">g</span>     <span class="mf">22.0</span>
+<span class="n">b</span>    <span class="mf">100.0</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">col1</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+
+<span class="n">ctest</span><span class="o">.</span><span class="n">normalized</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="c1"># or ctest = extremal.ColTest(&#39;col1&#39;, normalized = True)</span>
+<span class="n">result_nor</span> <span class="o">=</span> <span class="n">ctest</span><span class="o">.</span><span class="n">Apply</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># result_nor is the normalization of result</span>
+<span class="n">d</span>   <span class="o">-</span><span class="mf">0.215140</span>
+<span class="n">l</span>   <span class="o">-</span><span class="mf">0.182136</span>
+<span class="n">c</span>   <span class="o">-</span><span class="mf">0.171134</span>
+<span class="n">a</span>   <span class="o">-</span><span class="mf">0.149131</span>
+<span class="n">h</span>   <span class="o">-</span><span class="mf">0.094124</span>
+<span class="n">f</span>   <span class="o">-</span><span class="mf">0.083122</span>
+<span class="n">i</span>   <span class="o">-</span><span class="mf">0.083122</span>
+<span class="n">g</span>    <span class="mf">0.059897</span>
+<span class="n">b</span>    <span class="mf">0.918013</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">col1</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">extremals</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Documentation.html">Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../Documentation.html#module-extremals">extremals Module</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Documentation.html#functions">Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../Documentation.html#classes">Classes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="extremals.Test.html">Test</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ColTest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extremals.ColDiffTest.html">ColDiffTest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extremals.TWDTest.html">TWDTest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extremals.Extremals.html">Extremals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extremals.ExtremalsCol.html">ExtremalsCol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extremals.ExtremalsDiff.html">ExtremalsDiff</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Documentation.html#class-inheritance-diagram">Class Inheritance Diagram</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../Documentation.html">Documentation</a><ul>
+      <li>Previous: <a href="extremals.Test.html" title="previous chapter">Test</a></li>
+      <li>Next: <a href="extremals.ColDiffTest.html" title="next chapter">ColDiffTest</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Fabio Tonini.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../_sources/api/extremals.ColTest.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

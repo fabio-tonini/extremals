@@ -1,0 +1,186 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ExtremalsCol &#8212; extremals 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ExtremalsDiff" href="extremals.ExtremalsDiff.html" />
+    <link rel="prev" title="Extremals" href="extremals.Extremals.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="extremalscol">
+<h1>ExtremalsCol<a class="headerlink" href="#extremalscol" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="extremals.ExtremalsCol">
+<em class="property">class </em><code class="descclassname">extremals.</code><code class="descname">ExtremalsCol</code><span class="sig-paren">(</span><em>data</em>, <em>keys=None</em>, <em>exclude=[]</em>, <em>normalized=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/extremals.html#ExtremalsCol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extremals.ExtremalsCol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="extremals.Extremals.html#extremals.Extremals" title="extremals.Extremals"><code class="xref py py-class docutils literal notranslate"><span class="pre">extremals.Extremals</span></code></a></p>
+<p>This class applies  a series of <a class="reference internal" href="extremals.ColTest.html#extremals.ColTest" title="extremals.ColTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColTest</span></code></a> to the dataframe <code class="docutils literal notranslate"><span class="pre">data</span></code>, one for each specified column.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> (<em>pandas.DataFrame</em>) – dataframe, which is then copied in <code class="docutils literal notranslate"><span class="pre">self.data</span></code></li>
+<li><strong>keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a>) – list of columns to use, default None: all columns used</li>
+<li><strong>exclude</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a>) – list of columns to exclude, default empty</li>
+<li><strong>normalized</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – if True, the tests are normalized, default False</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples: we consider the dataframe <a class="reference internal" href="../Documentation.html#data"><span class="std std-ref">data</span></a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">xt</span><span class="o">.</span><span class="n">ExtremalsCol</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="s1">&#39;col3&#39;</span><span class="p">])</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ecol</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+
+<span class="c1"># result is the dataframe</span>
+    <span class="n">col1</span>  <span class="n">col3</span>       <span class="n">TWD</span>
+<span class="n">e</span>    <span class="n">NaN</span>  <span class="mf">21.0</span>  <span class="mf">0.036613</span>
+<span class="n">i</span>    <span class="mf">9.0</span>   <span class="n">NaN</span>  <span class="mf">0.083122</span>
+<span class="n">h</span>    <span class="mf">8.0</span>   <span class="n">NaN</span>  <span class="mf">0.094124</span>
+<span class="n">l</span>    <span class="mf">0.0</span>  <span class="mf">21.0</span>  <span class="mf">0.218748</span>
+<span class="n">f</span>    <span class="mf">9.0</span>   <span class="mf">3.0</span>  <span class="mf">0.281877</span>
+<span class="n">g</span>   <span class="mf">22.0</span>  <span class="o">-</span><span class="mf">4.0</span>  <span class="mf">0.350183</span>
+<span class="n">a</span>    <span class="mf">3.0</span>   <span class="mf">0.0</span>  <span class="mf">0.387113</span>
+<span class="n">d</span>   <span class="o">-</span><span class="mf">3.0</span>  <span class="mf">44.0</span>  <span class="mf">0.552499</span>
+<span class="n">c</span>    <span class="mf">1.0</span> <span class="o">-</span><span class="mf">13.4</span>  <span class="mf">0.584334</span>
+<span class="n">b</span>  <span class="mf">100.0</span>  <span class="mf">74.0</span>  <span class="mf">1.647650</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">result</span></code> is a concatenation of the first and third columns of <code class="docutils literal notranslate"><span class="pre">data</span></code> (up to sorting) and a <a class="reference internal" href="extremals.TWDTest.html#extremals.TWDTest" title="extremals.TWDTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">TWDTest</span></code></a> run on them.
+<code class="docutils literal notranslate"><span class="pre">result</span></code> is sorted according to this last column.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ecol</span><span class="o">.</span><span class="n">NormalizeTests</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># or ecol = xt.ExtremalsCol(data, keys = [&#39;col1&#39;, &#39;col3&#39;], normalized = True)</span>
+<span class="n">nor_result</span> <span class="o">=</span> <span class="n">ecol</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+
+<span class="c1"># nor_result is the dataframe</span>
+       <span class="n">col1</span>      <span class="n">col3</span>       <span class="n">TWD</span>
+<span class="n">e</span>       <span class="n">NaN</span>  <span class="mf">0.036613</span>  <span class="mf">0.036613</span>
+<span class="n">i</span> <span class="o">-</span><span class="mf">0.083122</span>       <span class="n">NaN</span>  <span class="mf">0.083122</span>
+<span class="n">h</span> <span class="o">-</span><span class="mf">0.094124</span>       <span class="n">NaN</span>  <span class="mf">0.094124</span>
+<span class="n">l</span> <span class="o">-</span><span class="mf">0.182136</span>  <span class="mf">0.036613</span>  <span class="mf">0.218748</span>
+<span class="n">f</span> <span class="o">-</span><span class="mf">0.083122</span> <span class="o">-</span><span class="mf">0.198754</span>  <span class="mf">0.281877</span>
+<span class="n">g</span>  <span class="mf">0.059897</span> <span class="o">-</span><span class="mf">0.290286</span>  <span class="mf">0.350183</span>
+<span class="n">a</span> <span class="o">-</span><span class="mf">0.149131</span> <span class="o">-</span><span class="mf">0.237982</span>  <span class="mf">0.387113</span>
+<span class="n">d</span> <span class="o">-</span><span class="mf">0.215140</span>  <span class="mf">0.337359</span>  <span class="mf">0.552499</span>
+<span class="n">c</span> <span class="o">-</span><span class="mf">0.171134</span> <span class="o">-</span><span class="mf">0.413199</span>  <span class="mf">0.584334</span>
+<span class="n">b</span>  <span class="mf">0.918013</span>  <span class="mf">0.729637</span>  <span class="mf">1.647650</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">nor_result</span></code> is obtained from <code class="docutils literal notranslate"><span class="pre">result</span></code> normalizing the two columns. We would obtain the same result with</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">xt</span><span class="o">.</span><span class="n">ExtremalsCol</span><span class="p">(</span><span class="n">xt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="s1">&#39;col3&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You can now bound the result using the <a class="reference internal" href="extremals.Extremals.html#extremals.Extremals.OutOfBound" title="extremals.Extremals.OutOfBound"><code class="xref py py-func docutils literal notranslate"><span class="pre">Extremals.OutOfBound</span></code></a> method. See <a class="reference internal" href="extremals.Extremals.html#extremals.Extremals" title="extremals.Extremals"><code class="xref py py-class docutils literal notranslate"><span class="pre">Extremals</span></code></a>.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">extremals</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Documentation.html">Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../Documentation.html#module-extremals">extremals Module</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Documentation.html#functions">Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../Documentation.html#classes">Classes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="extremals.Test.html">Test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extremals.ColTest.html">ColTest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extremals.ColDiffTest.html">ColDiffTest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extremals.TWDTest.html">TWDTest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extremals.Extremals.html">Extremals</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ExtremalsCol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extremals.ExtremalsDiff.html">ExtremalsDiff</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Documentation.html#class-inheritance-diagram">Class Inheritance Diagram</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../Documentation.html">Documentation</a><ul>
+      <li>Previous: <a href="extremals.Extremals.html" title="previous chapter">Extremals</a></li>
+      <li>Next: <a href="extremals.ExtremalsDiff.html" title="next chapter">ExtremalsDiff</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Fabio Tonini.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../_sources/api/extremals.ExtremalsCol.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

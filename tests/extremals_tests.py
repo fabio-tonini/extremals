@@ -289,7 +289,3 @@ if not AreEqual(r,redata): problem()
 
 if not AreEqual(xt.AddTWDTest(xt.Normalize(data)), xt.AddTWDTest(data, normalized = True)): problem()
 
-bad_step_1, good_step_1 = xt.PurgeTWD(data, high = 2) # steps = 1 is default
-new_order = xt.AddTWDTest(good_step_1)
-print(new_order)
-

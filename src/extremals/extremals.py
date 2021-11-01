@@ -37,27 +37,6 @@ import pandas as pd
 import numpy as np
 import math
 
-__all__= [
-"AddTests",
-"AddTWDTest",
-"Test",
-"ColTest",
-"ColDiffTest",
-"TWDTest",
-"Extremals",
-"ExtremalsCol",
-"ExtremalsDiff",
-"GetDiffTests",
-"GetColTests",
-"Normalize",
-"OutOfBound",
-"RWD",
-"TWD",
-"TWDExtremals",
-'PurgeTWD',
-"FilterDatakeys"
-]
-
 
 def RWD(value,mean,unstd):
     if unstd == 0:
@@ -368,7 +347,3 @@ def AddTWDTest(data, keys = None, exclude = [], normalized = False):
     new_data.sort_values(by = twd_key, inplace = True)
     return new_data
     
-from extremals_doc import *
-
-if __name__ == '__main__':
-    pass

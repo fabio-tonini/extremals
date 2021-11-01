@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+src/extremals/__init__.py
+src/extremals/extremals.py
+src/extremals/extremals_doc.py
+src/extremals.egg-info/PKG-INFO
+src/extremals.egg-info/SOURCES.txt
+src/extremals.egg-info/dependency_links.txt
+src/extremals.egg-info/top_level.txt

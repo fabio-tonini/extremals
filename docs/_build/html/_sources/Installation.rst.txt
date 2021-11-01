@@ -4,23 +4,18 @@
 Installation
 ============
 
-TO DO
+All source files are available at `github.com/fabio-tonini/extremals <https://github.com/fabio-tonini/extremals>`_.
 
-.. 
-    Step 1: pippa
-    -----------------------------------
+Using pip
+---------
 
+Run
 
-        $ pippa e installa
+.. code-block:: sh
 
+    $ pip install extremals
+    
+From source
+-----------
 
-    Step 2: sudo pippa
-    --------------------
-
-    Just type::
-
-        $ make
-        $ ./configure
-        $ python setup.py install
-
-    Once that works, congratulations! You've successfully installed extremals!
+Download ``extremals.py`` and ``extremals_doc.py`` from `github.com/fabio-tonini/extremals <https://github.com/fabio-tonini/extremals>`_ and put them in your project folder

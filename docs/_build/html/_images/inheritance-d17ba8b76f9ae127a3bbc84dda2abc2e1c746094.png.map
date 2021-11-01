@@ -1,9 +1,0 @@
-<map id="inheritance35d90313ed" name="inheritance35d90313ed">
-<area shape="rect" id="node1" href="api/extremals.ColDiffTest.html#extremals.ColDiffTest" target="_top" title="It tests the difference between columns key1 and key2: the function ``self.function`` maps a row to the difference of the values corresponding to the two columns." alt="" coords="151,104,243,129"/>
-<area shape="rect" id="node2" href="api/extremals.Test.html#extremals.Test" target="_top" title="This class implements the idea of a test to run on a dataframe." alt="" coords="13,153,85,179"/>
-<area shape="rect" id="node3" href="api/extremals.ColTest.html#extremals.ColTest" target="_top" title="This is a simple test on one column ``key``. The function ``self.function`` is the ``identity``: for each row return the value at that row." alt="" coords="161,153,233,179"/>
-<area shape="rect" id="node7" href="api/extremals.TWDTest.html#extremals.TWDTest" target="_top" title="Returns a Total Weighted Distance test" alt="" coords="157,203,236,228"/>
-<area shape="rect" id="node4" href="api/extremals.Extremals.html#extremals.Extremals" target="_top" title="This class allows to create a new dataframe as results of multiple tests and to look for the extremals rows." alt="" coords="5,31,93,56"/>
-<area shape="rect" id="node5" href="api/extremals.ExtremalsCol.html#extremals.ExtremalsCol" target="_top" title="This class applies &#160;a series of :py:class:`.ColTest` to the dataframe ``data``, one for each specified column." alt="" coords="142,5,251,31"/>
-<area shape="rect" id="node6" href="api/extremals.ExtremalsDiff.html#extremals.ExtremalsDiff" target="_top" title="This class applies a series of :py:class:`ColDiffTest` to the dataframe ``data``, one for each pair of specified columns." alt="" coords="141,55,252,80"/>
-</map>

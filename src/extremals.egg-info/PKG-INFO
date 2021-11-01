@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: extremals
+Version: 0.1
+Summary: Set of tools to inspect pandas dataframes looking for "extremals rows", that is rows "numerically different" from other ones.
+Home-page: https://fabio-tonini.github.io/extremals/
+Author: Fabio Tonini
+Author-email: tonini.work@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/fabio-tonini/extremals/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# extremals
+
+The python module extremals  contains a set of tools to inspect pandas dataframes looking for
+"extremals rows", that is rows "numerically different" from other ones. This may help filtering a dataframe from anomalous numerical data or, on the
+contrary, highlight exceptional rows from common ones.
+
+Visit the webpage for more information: https://fabio-tonini.github.io/extremals/
+
+

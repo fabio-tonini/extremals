@@ -18,7 +18,7 @@
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="AddTests" href="api/extremals.AddTests.html" />
+    <link rel="next" title="AddTWDTest" href="api/extremals.AddTWDTest.html" />
     <link rel="prev" title="Tutorial" href="Tutorial.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -72,38 +72,38 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="api/extremals.AddTests.html#extremals.AddTests" title="extremals.AddTests"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AddTests</span></code></a>(data,&nbsp;tests[,&nbsp;normalized])</td>
-<td>Concatenate <code class="docutils literal notranslate"><span class="pre">data</span></code> with the dataframe results of the tests in <code class="docutils literal notranslate"><span class="pre">tests</span></code>.</td>
+<tr class="row-odd"><td><a class="reference internal" href="api/extremals.AddTWDTest.html#extremals.AddTWDTest" title="extremals.AddTWDTest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AddTWDTest</span></code></a>(data[,&nbsp;keys,&nbsp;exclude,&nbsp;normalized])</td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/extremals.AddTWDTest.html#extremals.AddTWDTest" title="extremals.AddTWDTest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AddTWDTest</span></code></a>(data[,&nbsp;keys,&nbsp;exclude,&nbsp;normalized])</td>
-<td>Append the result of a <a class="reference internal" href="api/extremals.TWDTest.html#extremals.TWDTest" title="extremals.TWDTest"><code class="xref py py-func docutils literal notranslate"><span class="pre">TWDTest</span></code></a> as a column to <code class="docutils literal notranslate"><span class="pre">data</span></code>, sorting it according to their values.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/extremals.GetDiffTests.html#extremals.GetDiffTests" title="extremals.GetDiffTests"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetDiffTests</span></code></a>(data[,&nbsp;keys,&nbsp;exclude,&nbsp;normalized])</td>
-<td>Returns a list of <a class="reference internal" href="api/extremals.ColDiffTest.html#extremals.ColDiffTest" title="extremals.ColDiffTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColDiffTest</span></code></a>, one for each pair of specified columns.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/extremals.GetColTests.html#extremals.GetColTests" title="extremals.GetColTests"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetColTests</span></code></a>(data[,&nbsp;keys,&nbsp;exclude,&nbsp;normalized])</td>
-<td>Returns a list of <a class="reference internal" href="api/extremals.ColTest.html#extremals.ColTest" title="extremals.ColTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColTest</span></code></a>, one for each  specified column.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/extremals.Normalize.html#extremals.Normalize" title="extremals.Normalize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Normalize</span></code></a>(obj[,&nbsp;dropna])</td>
-<td>Returns a normalized copy of <code class="docutils literal notranslate"><span class="pre">obj</span></code>.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/extremals.OutOfBound.html#extremals.OutOfBound" title="extremals.OutOfBound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OutOfBound</span></code></a>(obj[,&nbsp;low,&nbsp;high,&nbsp;key,&nbsp;bound])</td>
-<td>Returns a dataframe or a series which is a concatenation of the lowest values of <code class="docutils literal notranslate"><span class="pre">obj</span></code> followed by the highest ones, depending on <code class="docutils literal notranslate"><span class="pre">low</span></code>, <code class="docutils literal notranslate"><span class="pre">high</span></code> and <code class="docutils literal notranslate"><span class="pre">bound</span></code>.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/extremals.RWD.html#extremals.RWD" title="extremals.RWD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RWD</span></code></a>(value,&nbsp;mean,&nbsp;unstd)</td>
-<td>Relative Weighted Distance</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/extremals.TWD.html#extremals.TWD" title="extremals.TWD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TWD</span></code></a>(values,&nbsp;means,&nbsp;unstds)</td>
-<td>Total Weighted Distance</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/extremals.TWDExtremals.html#extremals.TWDExtremals" title="extremals.TWDExtremals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TWDExtremals</span></code></a>(data[,&nbsp;bound,&nbsp;keys,&nbsp;exclude,&nbsp;name])</td>
-<td>Applies a <a class="reference internal" href="api/extremals.TWDTest.html#extremals.TWDTest" title="extremals.TWDTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">TWDTest</span></code></a> on <code class="docutils literal notranslate"><span class="pre">data</span></code></td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/extremals.PurgeTWD.html#extremals.PurgeTWD" title="extremals.PurgeTWD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PurgeTWD</span></code></a>(data,&nbsp;high[,&nbsp;steps,&nbsp;keys,&nbsp;exclude,&nbsp;…])</td>
-<td>Iteratively applies a <a class="reference internal" href="api/extremals.TWDTest.html#extremals.TWDTest" title="extremals.TWDTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">TWDTest</span></code></a> on <code class="docutils literal notranslate"><span class="pre">data</span></code>, removing the <code class="docutils literal notranslate"><span class="pre">high</span></code> “worst” elements from <code class="docutils literal notranslate"><span class="pre">data</span></code> in <code class="docutils literal notranslate"><span class="pre">steps</span></code> steps.</td>
+<tr class="row-even"><td><a class="reference internal" href="api/extremals.AddTests.html#extremals.AddTests" title="extremals.AddTests"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AddTests</span></code></a>(data,&nbsp;tests[,&nbsp;normalized])</td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="api/extremals.FilterDatakeys.html#extremals.FilterDatakeys" title="extremals.FilterDatakeys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FilterDatakeys</span></code></a>(data[,&nbsp;keys,&nbsp;exclude])</td>
-<td>Filter <code class="docutils literal notranslate"><span class="pre">keys</span></code> from non numeric columns and <code class="docutils literal notranslate"><span class="pre">data</span></code> for duplicated columns.</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="api/extremals.GetColTests.html#extremals.GetColTests" title="extremals.GetColTests"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetColTests</span></code></a>(data[,&nbsp;keys,&nbsp;exclude,&nbsp;normalized])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="api/extremals.GetDiffTests.html#extremals.GetDiffTests" title="extremals.GetDiffTests"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetDiffTests</span></code></a>(data[,&nbsp;keys,&nbsp;exclude,&nbsp;normalized])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="api/extremals.Normalize.html#extremals.Normalize" title="extremals.Normalize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Normalize</span></code></a>(obj[,&nbsp;dropna])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="api/extremals.OutOfBound.html#extremals.OutOfBound" title="extremals.OutOfBound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OutOfBound</span></code></a>(obj[,&nbsp;low,&nbsp;high,&nbsp;key,&nbsp;bound])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="api/extremals.PurgeTWD.html#extremals.PurgeTWD" title="extremals.PurgeTWD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PurgeTWD</span></code></a>(data,&nbsp;high[,&nbsp;steps,&nbsp;keys,&nbsp;exclude,&nbsp;…])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="api/extremals.RWD.html#extremals.RWD" title="extremals.RWD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RWD</span></code></a>(value,&nbsp;mean,&nbsp;unstd)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="api/extremals.TWD.html#extremals.TWD" title="extremals.TWD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TWD</span></code></a>(values,&nbsp;means,&nbsp;unstds)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="api/extremals.TWDExtremals.html#extremals.TWDExtremals" title="extremals.TWDExtremals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TWDExtremals</span></code></a>(data[,&nbsp;bound,&nbsp;keys,&nbsp;exclude,&nbsp;name])</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -116,41 +116,41 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="api/extremals.Test.html#extremals.Test" title="extremals.Test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Test</span></code></a>([keys,&nbsp;function,&nbsp;args,&nbsp;normalized,&nbsp;name])</td>
-<td>This class implements the idea of a test to run on a dataframe.</td>
+<tr class="row-odd"><td><a class="reference internal" href="api/extremals.ColDiffTest.html#extremals.ColDiffTest" title="extremals.ColDiffTest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ColDiffTest</span></code></a>(key1,&nbsp;key2[,&nbsp;normalized,&nbsp;name])</td>
+<td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="api/extremals.ColTest.html#extremals.ColTest" title="extremals.ColTest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ColTest</span></code></a>(key[,&nbsp;normalized,&nbsp;name])</td>
-<td>This is a simple test on one column <code class="docutils literal notranslate"><span class="pre">key</span></code>.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/extremals.ColDiffTest.html#extremals.ColDiffTest" title="extremals.ColDiffTest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ColDiffTest</span></code></a>(key1,&nbsp;key2[,&nbsp;normalized,&nbsp;name])</td>
-<td>It tests the difference between columns key1 and key2: the function <code class="docutils literal notranslate"><span class="pre">self.function</span></code> maps a row to the difference of the values corresponding to the two columns.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="api/extremals.TWDTest.html#extremals.TWDTest" title="extremals.TWDTest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TWDTest</span></code></a>([keys,&nbsp;name])</td>
-<td>Returns a Total Weighted Distance test</td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="api/extremals.Extremals.html#extremals.Extremals" title="extremals.Extremals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Extremals</span></code></a>(data[,&nbsp;tests])</td>
-<td>This class allows to create a new dataframe as results of multiple tests and to look for the extremals rows.</td>
+<td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="api/extremals.ExtremalsCol.html#extremals.ExtremalsCol" title="extremals.ExtremalsCol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExtremalsCol</span></code></a>(data[,&nbsp;keys,&nbsp;exclude,&nbsp;normalized])</td>
-<td>This class applies  a series of <a class="reference internal" href="api/extremals.ColTest.html#extremals.ColTest" title="extremals.ColTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColTest</span></code></a> to the dataframe <code class="docutils literal notranslate"><span class="pre">data</span></code>, one for each specified column.</td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="api/extremals.ExtremalsDiff.html#extremals.ExtremalsDiff" title="extremals.ExtremalsDiff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExtremalsDiff</span></code></a>(data[,&nbsp;keys,&nbsp;exclude,&nbsp;normalized])</td>
-<td>This class applies a series of <a class="reference internal" href="api/extremals.ColDiffTest.html#extremals.ColDiffTest" title="extremals.ColDiffTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColDiffTest</span></code></a> to the dataframe <code class="docutils literal notranslate"><span class="pre">data</span></code>, one for each pair of specified columns.</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="api/extremals.TWDTest.html#extremals.TWDTest" title="extremals.TWDTest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TWDTest</span></code></a>([keys,&nbsp;name])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="api/extremals.Test.html#extremals.Test" title="extremals.Test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Test</span></code></a>([keys,&nbsp;function,&nbsp;args,&nbsp;normalized,&nbsp;name])</td>
+<td></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="class-inheritance-diagram">
 <h3>Class Inheritance Diagram<a class="headerlink" href="#class-inheritance-diagram" title="Permalink to this headline">¶</a></h3>
-<div class="graphviz"><img src="_images/inheritance-d17ba8b76f9ae127a3bbc84dda2abc2e1c746094.png" alt="Inheritance diagram of extremals.Test, extremals.ColTest, extremals.ColDiffTest, extremals.TWDTest, extremals.Extremals, extremals.ExtremalsCol, extremals.ExtremalsDiff" usemap="#inheritance35d90313ed" class="inheritance graphviz" /></div>
-<map id="inheritance35d90313ed" name="inheritance35d90313ed">
-<area shape="rect" id="node1" href="api/extremals.ColDiffTest.html#extremals.ColDiffTest" target="_top" title="It tests the difference between columns key1 and key2: the function ``self.function`` maps a row to the difference of the values corresponding to the two columns." alt="" coords="151,104,243,129"/>
-<area shape="rect" id="node2" href="api/extremals.Test.html#extremals.Test" target="_top" title="This class implements the idea of a test to run on a dataframe." alt="" coords="13,153,85,179"/>
-<area shape="rect" id="node3" href="api/extremals.ColTest.html#extremals.ColTest" target="_top" title="This is a simple test on one column ``key``. The function ``self.function`` is the ``identity``: for each row return the value at that row." alt="" coords="161,153,233,179"/>
-<area shape="rect" id="node7" href="api/extremals.TWDTest.html#extremals.TWDTest" target="_top" title="Returns a Total Weighted Distance test" alt="" coords="157,203,236,228"/>
-<area shape="rect" id="node4" href="api/extremals.Extremals.html#extremals.Extremals" target="_top" title="This class allows to create a new dataframe as results of multiple tests and to look for the extremals rows." alt="" coords="5,31,93,56"/>
-<area shape="rect" id="node5" href="api/extremals.ExtremalsCol.html#extremals.ExtremalsCol" target="_top" title="This class applies &#160;a series of :py:class:`.ColTest` to the dataframe ``data``, one for each specified column." alt="" coords="142,5,251,31"/>
-<area shape="rect" id="node6" href="api/extremals.ExtremalsDiff.html#extremals.ExtremalsDiff" target="_top" title="This class applies a series of :py:class:`ColDiffTest` to the dataframe ``data``, one for each pair of specified columns." alt="" coords="141,55,252,80"/>
+<div class="graphviz"><img src="_images/inheritance-d2eab36b2afc64aafdd088cd7233781e863fb44a.png" alt="Inheritance diagram of extremals.ColDiffTest, extremals.ColTest, extremals.Extremals, extremals.ExtremalsCol, extremals.ExtremalsDiff, extremals.TWDTest, extremals.Test" usemap="#inheritance58bc44a0c0" class="inheritance graphviz" /></div>
+<map id="inheritance58bc44a0c0" name="inheritance58bc44a0c0">
+<area shape="rect" id="node1" href="api/extremals.ColDiffTest.html#extremals.ColDiffTest" target="_top" title="ColDiffTest" alt="" coords="151,104,243,129"/>
+<area shape="rect" id="node2" href="api/extremals.Test.html#extremals.Test" target="_top" title="Test" alt="" coords="13,153,85,179"/>
+<area shape="rect" id="node3" href="api/extremals.ColTest.html#extremals.ColTest" target="_top" title="ColTest" alt="" coords="161,153,233,179"/>
+<area shape="rect" id="node7" href="api/extremals.TWDTest.html#extremals.TWDTest" target="_top" title="TWDTest" alt="" coords="157,203,236,228"/>
+<area shape="rect" id="node4" href="api/extremals.Extremals.html#extremals.Extremals" target="_top" title="Extremals" alt="" coords="5,31,93,56"/>
+<area shape="rect" id="node5" href="api/extremals.ExtremalsCol.html#extremals.ExtremalsCol" target="_top" title="ExtremalsCol" alt="" coords="142,5,251,31"/>
+<area shape="rect" id="node6" href="api/extremals.ExtremalsDiff.html#extremals.ExtremalsDiff" target="_top" title="ExtremalsDiff" alt="" coords="141,55,252,80"/>
 </map><span class="target" id="module-extremals_doc"></span></div>
 </div>
 </div>
@@ -177,27 +177,27 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-extremals">extremals Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="api/extremals.AddTests.html">AddTests</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/extremals.AddTWDTest.html">AddTWDTest</a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/extremals.GetDiffTests.html">GetDiffTests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/extremals.AddTests.html">AddTests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/extremals.FilterDatakeys.html">FilterDatakeys</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/extremals.GetColTests.html">GetColTests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/extremals.GetDiffTests.html">GetDiffTests</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/extremals.Normalize.html">Normalize</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/extremals.OutOfBound.html">OutOfBound</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/extremals.PurgeTWD.html">PurgeTWD</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/extremals.RWD.html">RWD</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/extremals.TWD.html">TWD</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/extremals.TWDExtremals.html">TWDExtremals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/extremals.PurgeTWD.html">PurgeTWD</a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/extremals.FilterDatakeys.html">FilterDatakeys</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#classes">Classes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="api/extremals.Test.html">Test</a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/extremals.ColTest.html">ColTest</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/extremals.ColDiffTest.html">ColDiffTest</a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/extremals.TWDTest.html">TWDTest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/extremals.ColTest.html">ColTest</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/extremals.Extremals.html">Extremals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/extremals.ExtremalsCol.html">ExtremalsCol</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/extremals.ExtremalsDiff.html">ExtremalsDiff</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/extremals.TWDTest.html">TWDTest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/extremals.Test.html">Test</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#class-inheritance-diagram">Class Inheritance Diagram</a></li>
@@ -212,7 +212,7 @@
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="Tutorial.html" title="previous chapter">Tutorial</a></li>
-      <li>Next: <a href="api/extremals.AddTests.html" title="next chapter">AddTests</a></li>
+      <li>Next: <a href="api/extremals.AddTWDTest.html" title="next chapter">AddTWDTest</a></li>
   </ul></li>
 </ul>
 </div>

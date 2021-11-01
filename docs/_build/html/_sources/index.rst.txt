@@ -4,7 +4,7 @@ Python module extremals
 Introduction
 ~~~~~~~~~~~~
     The python module :ref:`extremals <Documentation:extremals Module>`  consists in a toolset to inspect pandas dataframes looking for
-    "extremals rows", that is rows "numerically different" from other ones. This may help filtering a dataframe from anomalous numerical data or, on the
+    "extremals rows", i.e. rows "numerically different" from others. This may help filtering a dataframe from anomalous numerical data or, on the
     contrary, highlight exceptional rows from common ones.
     
     But what makes some bunch of numbers special? The answer is: it depends on how you measure them. The :ref:`extremals <Documentation:extremals Module>` module

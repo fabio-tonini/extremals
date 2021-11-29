@@ -37,7 +37,7 @@
 <h1>Extremals<a class="headerlink" href="#extremals" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="extremals.Extremals">
-<em class="property">class </em><code class="descclassname">extremals.</code><code class="descname">Extremals</code><span class="sig-paren">(</span><em>data</em>, <em>tests=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/extremals.html#Extremals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extremals.Extremals" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">extremals.</code><code class="descname">Extremals</code><span class="sig-paren">(</span><em>data</em>, <em>tests=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/extremals.html#Extremals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extremals.Extremals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>This class allows to create a new dataframe as results of multiple tests and to look for the extremals rows.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -158,7 +158,7 @@ We can bound the results using</p>
 
 <dl class="method">
 <dt id="extremals.Extremals.OutOfBound">
-<code class="descname">OutOfBound</code><span class="sig-paren">(</span><em>low=0</em>, <em>high=0</em>, <em>key='TWD'</em>, <em>bound=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/extremals.html#Extremals.OutOfBound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extremals.Extremals.OutOfBound" title="Permalink to this definition">¶</a></dt>
+<code class="descname">OutOfBound</code><span class="sig-paren">(</span><em>low=0</em>, <em>high=0</em>, <em>key='TWD'</em>, <em>bound=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/extremals.html#Extremals.OutOfBound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extremals.Extremals.OutOfBound" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dataframe with the lowest values followed by the highest ones, depending on <code class="docutils literal notranslate"><span class="pre">low</span></code>, <code class="docutils literal notranslate"><span class="pre">high</span></code> and <code class="docutils literal notranslate"><span class="pre">bound</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -210,13 +210,13 @@ of the tests in <code class="docutils literal notranslate"><span class="pre">sel
 
 <dl class="method">
 <dt id="extremals.Extremals.SetColTests">
-<code class="descname">SetColTests</code><span class="sig-paren">(</span><em>keys=None</em>, <em>exclude=[]</em>, <em>normalized=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/extremals.html#Extremals.SetColTests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extremals.Extremals.SetColTests" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SetColTests</code><span class="sig-paren">(</span><em>keys=None</em>, <em>exclude=None</em>, <em>normalized=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/extremals.html#Extremals.SetColTests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extremals.Extremals.SetColTests" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set <code class="docutils literal notranslate"><span class="pre">self.tests</span></code> via <a class="reference internal" href="extremals.GetColTests.html#extremals.GetColTests" title="extremals.GetColTests"><code class="xref py py-func docutils literal notranslate"><span class="pre">GetColTests</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
 <dt id="extremals.Extremals.SetDiffTests">
-<code class="descname">SetDiffTests</code><span class="sig-paren">(</span><em>keys=None</em>, <em>exclude=[]</em>, <em>normalized=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/extremals.html#Extremals.SetDiffTests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extremals.Extremals.SetDiffTests" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SetDiffTests</code><span class="sig-paren">(</span><em>keys=None</em>, <em>exclude=None</em>, <em>normalized=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/extremals.html#Extremals.SetDiffTests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extremals.Extremals.SetDiffTests" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set <code class="docutils literal notranslate"><span class="pre">self.tests</span></code> via <a class="reference internal" href="extremals.GetDiffTests.html#extremals.GetDiffTests" title="extremals.GetDiffTests"><code class="xref py py-func docutils literal notranslate"><span class="pre">GetDiffTests</span></code></a></p>
 </dd></dl>
 

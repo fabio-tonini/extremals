@@ -141,7 +141,7 @@ The output, returned via :py:func:`Test.Apply`, is a sorted series.
 :type keys: list
 :param function: function, default ``None``
 :type function: function
-:param args: list of optional arguments for function, default empty
+:param args: list of optional arguments for ``function``, default empty
 :type args: list
 :param bool normalized: If True, the resulting series will be normalized (see :py:func:`Normalize`), default False
 :param name: name of the output series, default ``None``

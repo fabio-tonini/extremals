@@ -1,4 +1,17 @@
-import extremals as xt
+import os
+module_name = os.path.join('..','src', 'extremals','extremals.py')
+try:
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("module.name", module_name)
+    xt = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(xt)
+except:
+    from importlib.machinery import SourceFileLoader
+
+    xt = SourceFileLoader("module.name", module_name).load_module()
+
+
+#import extremals as xt
 import pandas as pd
 import numpy as np
 from numpy import nan

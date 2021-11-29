@@ -82,7 +82,8 @@ def Normalize(obj, dropna = True):
             obj[x] = Normalize(obj[x], False)
         return obj
 
-def FilterDatakeys(data, keys = None, exclude = []):
+def FilterDatakeys(data, keys = None, exclude = None):
+    if exclude is None: exclude = []
     if keys is None: keys = data.columns
     try: return [[k for k in keys if (not k in exclude) and (data[k].dtype in Test.numtype_list) ], data]
     except AttributeError:
@@ -96,10 +97,10 @@ class Test:
     """
 
     
-    def __init__(self, keys = None, function = None, args = [], normalized = False, name = None):
+    def __init__(self, keys = None, function = None, args = None, normalized = False, name = None):
         self.keys = keys
         self.function = function
-        self.args = args
+        self.args = args if args else []
         self.normalized = normalized
         self.name = name
 
@@ -181,9 +182,9 @@ def _find_bound(low, high, l, steps = 1):
     return [int(low/steps),int(high/steps)]
     
 
-def OutOfBound(obj, low = 0, high = 0, key = None, bound = []):
+def OutOfBound(obj, low = 0, high = 0, key = None, bound = None):
    
-   
+    bound = bound if bound else []
     if type(obj) == pd.Series:
         sel = 0
         series = obj.dropna()
@@ -212,11 +213,11 @@ def OutOfBound(obj, low = 0, high = 0, key = None, bound = []):
     return obj.loc[out].sort_values(by = key)
 
 
-def GetColTests(data, keys = None, exclude = [], normalized = False):
+def GetColTests(data, keys = None, exclude = None, normalized = False):
     keys, data = FilterDatakeys(data, keys, exclude)
     return [ColTest(k, normalized = normalized) for k in keys]
 
-def GetDiffTests(data, keys = None, exclude = [], normalized = False):
+def GetDiffTests(data, keys = None, exclude = None, normalized = False):
     keys, data = FilterDatakeys(data, keys, exclude)
     l=len(keys)
     return [ColDiffTest(keys[i], keys[j], normalized = normalized) 
@@ -224,16 +225,16 @@ def GetDiffTests(data, keys = None, exclude = [], normalized = False):
     
 
 class Extremals:
-    def __init__(self, data, tests = []):
+    def __init__(self, data, tests = None):
         self.data = data.copy()
         z, self.data = FilterDatakeys(self.data)
         self.results = None
-        self.tests = tests
+        self.tests = tests if tests else []
     
-    def SetColTests(self, keys = None, exclude = [], normalized = False):
+    def SetColTests(self, keys = None, exclude = None, normalized = False):
         self.tests = GetColTests(self.data, keys = keys, exclude = exclude, normalized = normalized)
         
-    def SetDiffTests(self, keys = None, exclude = [], normalized = False):
+    def SetDiffTests(self, keys = None, exclude = None, normalized = False):
         self.tests = GetDiffTests(self.data, keys = keys, exclude = exclude, normalized = normalized)
     
     def Run(self, twd = True):
@@ -255,22 +256,22 @@ class Extremals:
     def NormalizeTests(self, value = True):
         for test in self.tests: test.normalized = value
         
-    def OutOfBound(self,low = 0, high = 0, key = 'TWD', bound = []):
+    def OutOfBound(self,low = 0, high = 0, key = 'TWD', bound = None):
         return OutOfBound(self.results, low = low, high = high, key = key, bound = bound)
 
 class ExtremalsCol(Extremals):
-    def __init__(self, data, keys = None, exclude = [], normalized = False):
+    def __init__(self, data, keys = None, exclude = None, normalized = False):
         super().__init__(data, tests = [])
         self.SetColTests(keys = keys, exclude = exclude, normalized = normalized)
 
 class ExtremalsDiff(Extremals):
-    def __init__(self, data, keys = None, exclude = [], normalized = False):
+    def __init__(self, data, keys = None, exclude = None, normalized = False):
         super().__init__(data, tests = [])
         self.SetDiffTests(keys = keys, exclude = exclude, normalized = normalized)
 
 
-def TWDExtremals(data, bound = [-1, -1], keys = None, exclude = [], name = 'TWD'):
-    
+def TWDExtremals(data, bound = None, keys = None, exclude = None, name = 'TWD'):
+    bound = bound if bound else [-1,-1]
     if type(data) == pd.Series:
         data = pd.DataFrame({ 'col' : data }, dtype = 'float64')
         keys = ['col']
@@ -281,7 +282,7 @@ def TWDExtremals(data, bound = [-1, -1], keys = None, exclude = [], name = 'TWD'
     series = test.Apply(data)
     return OutOfBound(series, bound = bound)
 
-def PurgeTWD(data, high, steps = 1, keys = None, exclude = [], verbose = False):
+def PurgeTWD(data, high, steps = 1, keys = None, exclude = None, verbose = False):
     if type(data) == pd.Series:
         data = pd.DataFrame({ 'col' : data }, dtype = 'float64')
         keys = ['col']
@@ -339,7 +340,7 @@ def AddTests(data, tests, normalized = False):
     results = Extremals(data, tests = tests).Run(twd = False)
     return pd.concat([data, results], axis = 1)
     
-def AddTWDTest(data, keys = None, exclude = [], normalized = False):
+def AddTWDTest(data, keys = None, exclude = None, normalized = False):
     keys, data = FilterDatakeys(data, keys, exclude)
 
     new_data = AddTests(data, tests = TWDTest(keys = keys), normalized = normalized)

@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: extremals
-Version: 0.1.2
+Version: 0.2
 Summary: Toolset to inspect pandas dataframes looking for "extremals rows", i.e. rows "numerically different" from others.
 Home-page: https://fabio-tonini.github.io/extremals/
 Author: Fabio Tonini

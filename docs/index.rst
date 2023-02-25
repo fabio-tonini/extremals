@@ -21,7 +21,7 @@ Introduction
     
     - :py:class:`TWDTest <extremals.TWDTest>`, the Total Weighted Distance Test. Given a list of columns, this test associates with a row a sum of numbers between 0 and 1,
       one for each column. Those numbers measure how much an element differs by the mean of the column it belongs. Moreover they are opportunely normalized so that each
-      contribution is uniform, i.e. does non depends on "hog big" the numbers are in a given column. See :py:func:`Normalize <extremals.Normalize>` for further information.
+      contribution is uniform, i.e. does non depends on "how big" the numbers are in a given column. See :py:func:`Normalize <extremals.Normalize>` for further information.
 
     Each test can have a meaning of its own, which depends on the nature of the dataframe it is applied to. On the other hand we follow the idea 
     that, in a general situation, :py:class:`TWDTest <extremals.TWDTest>` tests are able to separate common rows by "extremal" ones. Any instance of
